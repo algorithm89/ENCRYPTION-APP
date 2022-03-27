@@ -12,26 +12,25 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="800.0" style="-fx-background-image: url('https://www.itl.cat/pngfile/big/47-470895_sunset-neon-artwork-wallpapers-hd-wallpapers-id-cyber.jpg'); -fx-background-position: center;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ciphers.enddec.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="800.0" style="-fx-background-image: url('https://wallpapercave.com/wp/wp4789667.jpg'); -fx-background-position: center; -fx-background-size: 800, 400;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ciphers.enddec.HelloController">
    <children>
       <Button layoutX="331.0" layoutY="34.0" mnemonicParsing="false" onAction="#ENC" prefHeight="30.0" prefWidth="139.0" text="ENCRYPT" />
       <Button layoutX="331.0" layoutY="268.0" mnemonicParsing="false" onAction="#DEC" prefHeight="30.0" prefWidth="139.0" text="DECRYPT" />
       <TextField fx:id="textField" layoutX="275.0" layoutY="82.0" prefHeight="26.0" prefWidth="250.0" />
       <TextField fx:id="textField2" layoutX="276.0" layoutY="314.0" prefHeight="26.0" prefWidth="250.0" />
       <ProgressBar fx:id="progressBar" layoutX="300.0" layoutY="126.0" prefWidth="200.0" progress="0.0" />
-      <Label alignment="CENTER" layoutX="326.0" layoutY="171.0" prefHeight="20.0" prefWidth="150.0" text="ENCRYPTED STRING">
+      <Label alignment="CENTER" layoutX="297.0" layoutY="171.0" prefHeight="24.0" prefWidth="200.0" text="ENCRYPTED STRING" textFill="WHITE">
          <font>
-            <Font name="Roboto Bold" size="14.0" />
+            <Font name="Rockwell Bold" size="17.0" />
          </font>
          <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </padding>
       </Label>
       <TextArea fx:id="textArea" layoutX="284.0" layoutY="198.0" prefHeight="44.0" prefWidth="238.0" />
-      <Label alignment="CENTER" layoutX="325.0" layoutY="369.0" prefHeight="20.0" prefWidth="150.0" text="DECRYPTED STRING">
+      <Label alignment="CENTER" layoutX="300.0" layoutY="369.0" prefHeight="23.0" prefWidth="200.0" text="DECRYPTED STRING">
          <font>
-            <Font name="Roboto Bold" size="14.0" />
+            <Font name="Rockwell Extra Bold" size="15.0" />
          </font>
          <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
