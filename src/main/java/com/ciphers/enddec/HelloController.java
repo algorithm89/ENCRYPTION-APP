@@ -100,7 +100,10 @@ public static String decrypt(final String strToDecrypt, final String secret) {
     {
         progress = new BigDecimal(String.format("%.2f",progress.doubleValue()-1));
         progressBar.setProgress(progress.doubleValue());
-
+        textField.setText("");
+        textArea.setText("");
+        textField2.setText("");
+        textArea2.setText("");
     }
 
     @FXML
