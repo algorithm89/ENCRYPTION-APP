@@ -53,5 +53,6 @@
          </textFill>
       </Label>
       <TextArea fx:id="textArea2" layoutX="281.0" layoutY="391.0" prefHeight="44.0" prefWidth="238.0" />
+      <Button layoutX="373.0" layoutY="225.0" mnemonicParsing="false" onAction="#ResetProgress" text="RESET" />
    </children>
 </AnchorPane>
