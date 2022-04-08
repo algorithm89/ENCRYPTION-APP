@@ -57,10 +57,6 @@ pipeline {
                   {
                       sh "echo 'Releasing Snapshot...' "
                       sh "mvn clean install"
-                  } else
-                  {
-                      sh "echo 'Skipping to Release' "
-
                   }
 
               }
@@ -74,9 +70,8 @@ pipeline {
                 script {
                     if (env.RELEASE == 'YES')
                     {
-
                         sh "echo 'Releasing Release...' "
-                       sh "mvn -B release:prepare && mvn release:perform"
+                        sh "mvn -B release:prepare && mvn release:perform"
                     }
 
                 }
