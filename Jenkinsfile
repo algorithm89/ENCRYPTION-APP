@@ -17,11 +17,15 @@ pipeline {
         // Where your Nexus is running
         NEXUS_URL = "nexus.bubliks.net"
         // Repository where we will upload the artifact
-        NEXUS_REPOSITORY = "repository-example"
+        NEXUS_REPOSITORY = "app-snapshots"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "NEXUS"
 
         RELEASE = 'NO'
+
+        NEXUS_CREDS = credentials('NexusArtifactoryLogin')
+        NEXUS_USER = "$NEXUS_CREDS_USR"
+        NEXUS_PASSWORD = "$NEXUS_CREDS_PSW"
     }
 
     stages {
@@ -34,6 +38,19 @@ pipeline {
             }
         }
 
+        stage("ECHO-VARS") {
+            steps {
+
+                script{
+
+                        sh "echo ${RELEASE}' "
+
+
+                }
+
+            }
+        }
+
         stage("PUBLISH-SNAPSHOT") {
             steps {
 
@@ -41,7 +58,7 @@ pipeline {
                   if (env.RELEASE == 'NO')
                   {
                       sh "echo 'Releasing Snapshot...' "
-                      sh "mvn "
+                      sh "mvn clean install"
                   } else
                   {
                       sh "echo 'Skipping to Release' "
@@ -61,7 +78,7 @@ pipeline {
                     {
 
                         sh "echo 'Releasing Release...' "
-                        sh "mvn package -DskipTests=true"
+                       sh "mvn -B release:prepare && mvn release:perform"
                     }
 
                 }
