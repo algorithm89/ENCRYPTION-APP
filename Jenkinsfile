@@ -4,6 +4,10 @@ pipeline {
         label "master"
     }
 
+    parameters {
+        string(name: 'RELEASE', defaultValue: 'NO')
+    }
+
     tools {
         // Note: this should match with the tool name configured in your jenkins instance (JENKINS_URL/configureTools/)
         maven "M3"
@@ -21,7 +25,6 @@ pipeline {
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "NEXUS"
 
-        RELEASE = "NO"
 
 
     }
@@ -53,7 +56,7 @@ pipeline {
             steps {
 
               script{
-                  if ( '${RELEASE}' == 'NO')
+                  if ( ${RELEASE} == 'NO')
                   {
                       sh "echo '${RELEASE}' "
                       sh "echo 'Releasing Snapshot...' "
@@ -69,7 +72,7 @@ pipeline {
         stage("PUBLISH-RELEASE") {
             steps {
                 script {
-                    if ( '${RELEASE}' == 'YES')
+                    if ( ${RELEASE} == 'YES')
                     {
                         sh "echo '${RELEASE}' "
                         sh "echo 'Releasing Release...' "
