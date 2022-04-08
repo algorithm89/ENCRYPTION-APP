@@ -41,7 +41,7 @@ pipeline {
 
                 script{
 
-                        sh "echo ${RELEASE}' "
+                        sh "echo '${RELEASE}' "
 
 
                 }
