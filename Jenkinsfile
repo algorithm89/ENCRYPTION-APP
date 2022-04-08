@@ -23,9 +23,7 @@ pipeline {
 
         RELEASE = 'NO'
 
-        NEXUS_CREDS = credentials('NexusArtifactoryLogin')
-        NEXUS_USER = "$NEXUS_CREDS_USR"
-        NEXUS_PASSWORD = "$NEXUS_CREDS_PSW"
+
     }
 
     stages {
