@@ -21,7 +21,7 @@ pipeline {
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "NEXUS"
 
-        RELEASE = ""
+        RELEASE = "NO"
 
 
     }
@@ -53,7 +53,7 @@ pipeline {
             steps {
 
               script{
-                  if (env.RELEASE == 'NO')
+                  if ( '${RELEASE}' == 'NO')
                   {
                       sh "echo '${RELEASE}' "
                       sh "echo 'Releasing Snapshot...' "
@@ -69,7 +69,7 @@ pipeline {
         stage("PUBLISH-RELEASE") {
             steps {
                 script {
-                    if (env.RELEASE == 'YES')
+                    if ( '${RELEASE}' == 'YES')
                     {
                         sh "echo '${RELEASE}' "
                         sh "echo 'Releasing Release...' "
