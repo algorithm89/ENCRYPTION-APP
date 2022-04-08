@@ -56,7 +56,7 @@ pipeline {
             steps {
 
               script{
-                  if ( ${RELEASE} == 'NO')
+                  if ( '${RELEASE}' == 'NO')
                   {
                       sh "echo '${RELEASE}' "
                       sh "echo 'Releasing Snapshot...' "
@@ -72,7 +72,7 @@ pipeline {
         stage("PUBLISH-RELEASE") {
             steps {
                 script {
-                    if ( ${RELEASE} == 'YES')
+                    if ( '${RELEASE}' == 'YES')
                     {
                         sh "echo '${RELEASE}' "
                         sh "echo 'Releasing Release...' "
