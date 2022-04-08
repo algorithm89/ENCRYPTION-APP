@@ -39,24 +39,13 @@ pipeline {
             }
         }
 
-        stage("ECHO-VARS") {
-            steps {
 
-                script{
-
-                        sh "echo '${RELEASE}' "
-
-
-                }
-
-            }
-        }
 
         stage("PUBLISH-SNAPSHOT") {
             steps {
 
               script{
-                  if ( '${RELEASE}' == 'NO')
+                  if ( "$params.RELEASE" == 'NO')
                   {
                       sh "echo '${RELEASE}' "
                       sh "echo 'Releasing Snapshot...' "
@@ -72,7 +61,7 @@ pipeline {
         stage("PUBLISH-RELEASE") {
             steps {
                 script {
-                    if ( '${RELEASE}' == 'YES')
+                    if (  "$params.RELEASE" == 'YES')
                     {
                         sh "echo '${RELEASE}' "
                         sh "echo 'Releasing Release...' "
