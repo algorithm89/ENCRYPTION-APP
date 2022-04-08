@@ -17,11 +17,11 @@ pipeline {
         // Where your Nexus is running
         NEXUS_URL = "nexus.bubliks.net"
         // Repository where we will upload the artifact
-        NEXUS_REPOSITORY = "app-releases"
+        NEXUS_REPOSITORY = "app-snapshots"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "NEXUS"
 
-        RELEASE = 'NO'
+        RELEASE = ""
 
 
     }
