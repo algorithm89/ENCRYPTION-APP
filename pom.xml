@@ -141,4 +141,10 @@
         </plugins>
     </build>
 
+    <scm>
+        <connection>scm:git:ssh://git@github.com:algorithm89/ENCRYPTION-APP.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:algorithm89/ENCRYPTION-APP.git</developerConnection>
+        <url>http://git@github.com:algorithm89/ENCRYPTION-APP.git/tree/master</url>
+    </scm>
+
 </project>
