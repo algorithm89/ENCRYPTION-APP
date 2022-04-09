@@ -140,9 +140,5 @@
 
         </plugins>
     </build>
-    <scm>
-        <developerConnection>
-            scm:git@github.com:algorithm89/ENCRYPTION-APP.git
-        </developerConnection>
-    </scm>
+
 </project>
