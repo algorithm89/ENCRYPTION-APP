@@ -45,9 +45,7 @@ pipeline {
 
               script{
 
-
                       sh "mvn clean install"
-
 
               }
 
@@ -64,7 +62,7 @@ pipeline {
 
 
                     def pom = readMavenPom file: "pom.xml";
-                    def nexusRepoName = pom.version.endsWith("SNAPSHOT") ? "app-mvn-releases" : "app-mvn-snapshots"
+                    def nexusRepoName = pom.version.endsWith("SNAPSHOT") ? "app-mvn-snapshots" : "app-mvn-releases"
 
                     // Find built artifact under target folder
                     filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
