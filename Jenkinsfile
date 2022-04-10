@@ -4,9 +4,7 @@ pipeline {
         label "master"
     }
 
-    parameters {
-        string(name: 'RELEASE', defaultValue: 'NO')
-    }
+
 
     tools {
         // Note: this should match with the tool name configured in your jenkins instance (JENKINS_URL/configureTools/)
@@ -21,7 +19,7 @@ pipeline {
         // Where your Nexus is running
         NEXUS_URL = "nexus.bubliks.net"
         // Repository where we will upload the artifact
-        NEXUS_REPOSITORY = "app-snapshots"
+        NEXUS_REPOSITORY = "app-mvn-releases"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "NEXUS"
 
@@ -42,16 +40,14 @@ pipeline {
 
 
 
-        stage("PUBLISH-SNAPSHOT") {
+        stage("PUBLISH-FILE") {
             steps {
 
               script{
-                  if ( "$params.RELEASE" == 'NO')
-                  {
-                      sh "echo '${RELEASE}' "
-                      sh "echo 'Releasing Snapshot...' "
+
+
                       sh "mvn clean install"
-                  }
+
 
               }
 
@@ -59,25 +55,17 @@ pipeline {
         }
 
 
-        stage("PUBLISH-RELEASE") {
-            steps {
-                script {
-                    if (  "$params.RELEASE" == 'YES')
-                    {
-                        sh "echo '${RELEASE}' "
-                        sh "echo 'Releasing Release...' "
-                        sh "mvn -B release:prepare && mvn release:perform"
-                    }
 
-                }
-            }
-        }
 
         stage("publish to nexus") {
             steps {
                 script {
                     // Read POM xml file using 'readMavenPom' step , this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
-                    pom = readMavenPom file: "pom.xml";
+
+
+                    def pom = readMavenPom file: "pom.xml";
+                    def nexusRepoName = pom.version.endsWith("SNAPSHOT") ? "app-mvn-snapshots" : "app-mvn-releases"
+
                     // Find built artifact under target folder
                     filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
                     // Print some info from the artifact found
@@ -96,7 +84,7 @@ pipeline {
                             nexusUrl: NEXUS_URL,
                             groupId: pom.groupId,
                             version: pom.version,
-                            repository: NEXUS_REPOSITORY,
+                            repository: nexusRepoName,
                             credentialsId: NEXUS_CREDENTIAL_ID,
                             artifacts: [
                                 // Artifact generated such as .jar, .ear and .war files.
