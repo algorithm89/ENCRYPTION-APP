@@ -66,7 +66,6 @@ pipeline {
                     def pom = readMavenPom file: "pom.xml";
                     def nexusRepoName = pom.version.endsWith("SNAPSHOT") ? "app-mvn-snapshots" : "app-mvn-releases";
 
-
                     // Find built artifact under target folder
                     filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
                     // Print some info from the artifact found
