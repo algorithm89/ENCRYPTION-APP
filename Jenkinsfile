@@ -40,7 +40,6 @@ pipeline {
                   echo "OH YEAAA"
 
               }
-
             }
         }
 
