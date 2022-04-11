@@ -37,6 +37,7 @@ pipeline {
               script{
 
                       sh "mvn clean install"
+                  echo "OH YEAAA"
 
               }
 
