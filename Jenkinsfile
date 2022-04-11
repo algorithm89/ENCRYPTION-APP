@@ -31,7 +31,7 @@ pipeline {
 
 
 
-        stage("PUBLISH-FILE") {
+        stage("BUILD-ARTIFACT") {
             steps {
 
               script{
@@ -45,15 +45,14 @@ pipeline {
 
 
 
-
         stage("publish to nexus") {
             steps {
                 script {
                     // Read POM xml file using 'readMavenPom' step , this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
 
 
-                    def pom = readMavenPom file: "pom.xml";
-                    def nexusRepoName = pom.version.endsWith("SNAPSHOT") ? "app-mvn-snapshots" : "app-mvn-releases";
+                    def pom = readMavenPom file: "pom.xml"
+                    def nexusRepoName = pom.version.endsWith("SNAPSHOT") ? "app-mvn-snapshots" : "app-mvn-releases"
 
                     // Find built artifact under target folder
                     filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
@@ -65,7 +64,7 @@ pipeline {
                     artifactExists = fileExists artifactPath;
 
                     if(artifactExists) {
-                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
+                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}"
 
                         nexusArtifactUploader(
                             nexusVersion: NEXUS_VERSION,
@@ -91,7 +90,7 @@ pipeline {
                         );
 
                     } else {
-                        error "*** File: ${artifactPath}, could not be found";
+                        error "*** File: ${artifactPath}, could not be found"
                     }
                 }
             }
