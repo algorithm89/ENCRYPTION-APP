@@ -31,15 +31,12 @@ pipeline {
 
 
 
-
         stage("PUBLISH-FILE") {
             steps {
 
               script{
 
-
                       sh "mvn clean install"
-
 
               }
 
@@ -100,5 +97,10 @@ pipeline {
             }
         }
 
+        post {
+            always {
+                cleanWs()
+            }
+        }
     }
 }
