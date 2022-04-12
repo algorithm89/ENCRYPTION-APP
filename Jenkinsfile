@@ -22,6 +22,7 @@ pipeline {
         NEXUS_REPOSITORY = "app-mvn-releases"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "NEXUS"
+        BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
 
 
 
@@ -37,7 +38,7 @@ pipeline {
             steps {
 
               script{
-
+                      echo 'Pulling...from' + env.BRANCH_NAME
                       sh "mvn clean install"
 
               }
