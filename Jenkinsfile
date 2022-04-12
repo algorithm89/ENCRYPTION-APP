@@ -38,6 +38,7 @@ pipeline {
 
                       sh "mvn clean install"
                   echo "OH YEAAA"
+                  echo "OH YEAAA"
 
               }
             }
