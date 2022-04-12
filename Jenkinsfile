@@ -36,7 +36,7 @@ pipeline {
 
               script{
 
-                  sh "echo Building Artifact.... from $BRANCH_NAME"
+                  sh "echo Building Artifact.... from ${env.BRANCH_NAME}"
                   sh "mvn clean install"
 
 
