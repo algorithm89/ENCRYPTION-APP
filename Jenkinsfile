@@ -38,7 +38,7 @@ pipeline {
 
               script{
 
-                  echo 'Pulling...' + env.BRANCH_NAME
+                  echo 'Pulling...' + env.BRANCH_NAME + ' ' + env.GIT_BRANCH
                   sh "mvn clean install"
 
 
