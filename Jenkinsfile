@@ -22,6 +22,7 @@ pipeline {
         NEXUS_REPOSITORY = "app-mvn-releases"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "NEXUS"
+
         BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
 
 
