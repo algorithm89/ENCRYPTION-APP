@@ -1,14 +1,12 @@
 pipeline {
 
     agent {
-        label "master"
-    }
+        docker
+                {
+                    image 'maven:3.8.5-jdk-11'
+                    args  '-u root:root -v $HOME/.m2:/root/.m2'
 
-
-
-    tools {
-        // Note: this should match with the tool name configured in your jenkins instance (JENKINS_URL/configureTools/)
-        maven "M3"
+                }
     }
 
     environment {
