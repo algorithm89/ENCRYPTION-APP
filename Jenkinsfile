@@ -1,7 +1,12 @@
 pipeline {
 
     agent {
-        label "master"
+        docker
+                {
+                    image 'maven:3.8.5-jdk-11'
+                    args  '-v $HOME/.m2:/root/.m2'
+
+                }
     }
 
 
@@ -40,7 +45,7 @@ pipeline {
 
               script{
                       echo 'Pulling...from ' + env.BRANCH_NAME
-                      sh "mvn clean install"
+                      sh   "mvn clean install"
 
               }
 
