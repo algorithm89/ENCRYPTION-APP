@@ -9,7 +9,19 @@
     <version>1.0.0</version>
     <name>END-DEC</name>
 
+        <repositories>
+            <repository>
+                <id>DevOps-Artifacts</id>
+                <url>https://pkgs.dev.azure.com/clouduserpef9bd682/JAVA-PIPE/_packaging/DevOps-Artifacts/maven/v1</url>
+                <releases>
+                    <enabled>true</enabled>
+                </releases>
+                <snapshots>
+                    <enabled>true</enabled>
+                </snapshots>
+            </repository>
 
+        </repositories>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -52,6 +64,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 
 
     <build>
